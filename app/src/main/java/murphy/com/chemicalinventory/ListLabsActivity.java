@@ -1,9 +1,11 @@
 package murphy.com.chemicalinventory;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ListView;
 
 import io.realm.Realm;
@@ -26,6 +28,11 @@ public class ListLabsActivity extends AppCompatActivity {
         ListView listView = (ListView) findViewById(R.id.lab_list);
 
         listView.setAdapter(adapter);
+    }
+
+    public void createLab(View view) {
+        Intent createLabActivity = new Intent(this, LabActivity.class);
+        startActivity(createLabActivity);
     }
 
     @Override

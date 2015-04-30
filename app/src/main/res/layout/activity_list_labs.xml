@@ -28,6 +28,6 @@
         android:tint="@android:color/white"
         android:id="@+id/fab"
         android:elevation="1dp"
-        android:onClick="update"
+        android:onClick="createLab"
         android:contentDescription="@string/floating_action_button" />
 </RelativeLayout>
