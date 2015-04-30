@@ -15,14 +15,14 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Name"
-        android:id="@+id/label_name"
+        android:id="@+id/label_lab_name"
         app:layout_row="0"
         app:layout_column="0" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/edit_name"
+        android:id="@+id/edit_lab_name"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         app:layout_row="0"
         app:layout_column="1" />
@@ -32,14 +32,14 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Location"
-        android:id="@+id/label_location"
+        android:id="@+id/label_lab_location"
         app:layout_row="1"
         app:layout_column="0" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/edit_location"
+        android:id="@+id/edit_lab_location"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         app:layout_row="1"
         app:layout_column="1" />
@@ -49,14 +49,14 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Manager"
-        android:id="@+id/label_manager"
+        android:id="@+id/label_lab_manager"
         app:layout_row="2"
         app:layout_column="0" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/edit_manager"
+        android:id="@+id/edit_lab_manager"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         app:layout_row="2"
         app:layout_column="1" />
@@ -65,7 +65,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Create"
-        android:id="@+id/lab_create_button"
+        android:id="@+id/create_lab_button"
         app:layout_row="3"
         app:layout_column="1" />
 
