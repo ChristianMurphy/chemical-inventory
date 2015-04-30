@@ -1,19 +1,43 @@
 package murphy.com.chemicalinventory;
 
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
+
+import io.realm.Realm;
+import io.realm.RealmResults;
+import murphy.com.chemicalinventory.adapters.LabAdapter;
+import murphy.com.chemicalinventory.models.Lab;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-    }
 
+        Realm realm = Realm.getInstance(this);
+
+//        realm.beginTransaction();
+//
+//        Lab lab = realm.createObject(Lab.class); // Create a new object
+//        lab.setName("John");
+//
+//
+//        realm.commitTransaction();
+
+
+        RealmResults<Lab> labs = realm.where(Lab.class).findAll();
+
+        LabAdapter adapter = new LabAdapter(getApplicationContext(), labs, false);
+        setContentView(R.layout.activity_main);
+        ListView listView = (ListView) findViewById(R.id.lab_list);
+
+        listView.setAdapter(adapter);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
