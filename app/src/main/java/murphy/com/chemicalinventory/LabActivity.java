@@ -36,6 +36,8 @@ public class LabActivity extends AppCompatActivity {
         lab.setLocation(labLocation);
         lab.setManager(labManager);
         realm.commitTransaction();
+
+        finish();
     }
 
 

@@ -66,6 +66,7 @@
         android:layout_height="wrap_content"
         android:text="Create"
         android:id="@+id/create_lab_button"
+        android:onClick="createLab"
         app:layout_row="3"
         app:layout_column="1" />
 
