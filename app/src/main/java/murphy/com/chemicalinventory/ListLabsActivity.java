@@ -2,7 +2,6 @@ package murphy.com.chemicalinventory;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
@@ -13,27 +12,17 @@ import murphy.com.chemicalinventory.adapters.LabAdapter;
 import murphy.com.chemicalinventory.models.Lab;
 
 
-public class MainActivity extends AppCompatActivity {
+public class ListLabsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         Realm realm = Realm.getInstance(this);
-
-//        realm.beginTransaction();
-//
-//        Lab lab = realm.createObject(Lab.class); // Create a new object
-//        lab.setName("John");
-//
-//
-//        realm.commitTransaction();
-
-
         RealmResults<Lab> labs = realm.where(Lab.class).findAll();
 
-        LabAdapter adapter = new LabAdapter(getApplicationContext(), labs, false);
-        setContentView(R.layout.activity_main);
+        LabAdapter adapter = new LabAdapter(getApplicationContext(), labs, true);
+        setContentView(R.layout.activity_list_labs);
         ListView listView = (ListView) findViewById(R.id.lab_list);
 
         listView.setAdapter(adapter);

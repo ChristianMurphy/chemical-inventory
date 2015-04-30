@@ -3,12 +3,13 @@ package murphy.com.chemicalinventory.models;
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
-import io.realm.annotations.RealmClass;
 
-@RealmClass
 public class Lab extends RealmObject {
     @PrimaryKey
     private String name;
+
+    private String location;
+    private String manager;
 
     private RealmList<Chemical> chemicals;
 
@@ -18,6 +19,22 @@ public class Lab extends RealmObject {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getManager() {
+        return manager;
+    }
+
+    public void setManager(String manager) {
+        this.manager = manager;
     }
 
     public RealmList<Chemical> getChemicals() {

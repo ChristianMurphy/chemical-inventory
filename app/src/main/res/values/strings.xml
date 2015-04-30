@@ -2,4 +2,7 @@
     <string name="app_name">Chemical Inventory</string>
 
     <string name="action_settings">Settings</string>
+    <string name="title_activity_lab">LabActivity</string>
+
+    <string name="hello_world">Hello world!</string>
 </resources>
