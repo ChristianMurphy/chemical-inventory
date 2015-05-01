@@ -5,4 +5,7 @@
     <string name="title_activity_lab">LabActivity</string>
 
     <string name="floating_action_button">New</string>
+    <string name="title_activity_list_chemicals">ListChemicalsActivity</string>
+
+    <string name="hello_world">Hello world!</string>
 </resources>

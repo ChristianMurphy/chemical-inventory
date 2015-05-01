@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import io.realm.Realm;
@@ -15,6 +16,7 @@ import murphy.com.chemicalinventory.models.Lab;
 
 
 public class ListLabsActivity extends AppCompatActivity {
+    LabAdapter labAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,11 +25,19 @@ public class ListLabsActivity extends AppCompatActivity {
         Realm realm = Realm.getInstance(this);
         RealmResults<Lab> labs = realm.where(Lab.class).findAll();
 
-        LabAdapter adapter = new LabAdapter(getApplicationContext(), labs, true);
+        labAdapter = new LabAdapter(getApplicationContext(), labs, true);
         setContentView(R.layout.activity_list_labs);
         ListView listView = (ListView) findViewById(R.id.lab_list);
 
-        listView.setAdapter(adapter);
+        listView.setAdapter(labAdapter);
+        listView.setClickable(true);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView parent, View v, int position, long id){
+                labAdapter.getRealmResults().get(position).getName();
+                Intent listChemicalsActivity = new Intent(parent.getContext(), ListChemicalsActivity.class);
+                startActivity(listChemicalsActivity);
+            }
+        });
     }
 
     public void createLab(View view) {
