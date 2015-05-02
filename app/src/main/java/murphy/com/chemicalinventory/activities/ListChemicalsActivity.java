@@ -27,7 +27,10 @@ public class ListChemicalsActivity extends AppCompatActivity {
         labName = getIntent().getExtras().getString("name");
 
         Realm realm = Realm.getInstance(this);
-        RealmResults<ChemicalModel> chemicals = realm.where(ChemicalModel.class).equalTo("lab.name", labName).findAll();
+        RealmResults<ChemicalModel> chemicals = realm
+                .where(ChemicalModel.class)
+                .equalTo("lab.name", labName)
+                .findAll();
 
         chemicalListAdapter = new ChemicalListAdapter(getApplicationContext(), chemicals, true);
         setContentView(R.layout.activity_list_chemicals);
@@ -39,6 +42,7 @@ public class ListChemicalsActivity extends AppCompatActivity {
             public void onItemClick(AdapterView parent, View v, int position, long id){
                 Intent editChemicalActivity = new Intent(parent.getContext(), EditChemicalActvity.class);
                 editChemicalActivity.putExtra("chemicalName", chemicalListAdapter.getRealmResults().get(position).getName());
+                editChemicalActivity.putExtra("labName", labName);
                 startActivity(editChemicalActivity);
             }
         });

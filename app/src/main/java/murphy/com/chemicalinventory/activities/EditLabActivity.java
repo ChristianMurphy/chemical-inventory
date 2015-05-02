@@ -39,6 +39,7 @@ public class EditLabActivity extends AppCompatActivity {
         lab.setName(labName);
         lab.setLocation(labLocation);
         lab.setManager(labManager);
+
         realm.commitTransaction();
         realm.close();
 

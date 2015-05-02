@@ -1,6 +1,7 @@
 package murphy.com.chemicalinventory.adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListAdapter;
@@ -34,6 +35,7 @@ public class LabListAdapter extends RealmBaseAdapter<LabModel> implements ListAd
 
         LabModel item = realmResults.get(position);
         viewHolder.name.setText(item.getName());
+        viewHolder.name.setTextColor(Color.BLACK);
         return convertView;
     }
 

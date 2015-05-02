@@ -1,6 +1,7 @@
 package murphy.com.chemicalinventory.adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListAdapter;
@@ -36,7 +37,9 @@ public class ChemicalListAdapter extends RealmBaseAdapter<ChemicalModel> impleme
 
         ChemicalModel item = realmResults.get(position);
         viewHolder.name.setText(item.getName());
+        viewHolder.name.setTextColor(Color.BLACK);
         viewHolder.chemicalAbstractServiceRegistryNumber.setText(item.getChemicalAbstractServiceRegistryNumber());
+        viewHolder.chemicalAbstractServiceRegistryNumber.setTextColor(Color.BLACK);
         return convertView;
     }
 

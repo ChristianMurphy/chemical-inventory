@@ -24,7 +24,9 @@ public class ListLabsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         Realm realm = Realm.getInstance(this);
-        RealmResults<LabModel> labs = realm.where(LabModel.class).findAll();
+        RealmResults<LabModel> labs = realm
+                .where(LabModel.class)
+                .findAll();
 
         labListAdapter = new LabListAdapter(getApplicationContext(), labs, true);
         setContentView(R.layout.activity_list_labs);

@@ -23,14 +23,18 @@ public class EditChemicalActvity extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         setContentView(R.layout.activity_edit_chemical);
-        if (extras.containsKey("labName")) {
-            oldChemicalName = null;
+        if (extras.containsKey("chemicalName")) {
+            // Get the lab name
             labName = extras.getString("labName");
-        } else {
+
             // Get the ChemicalModel
             oldChemicalName = extras.getString("chemicalName");
             Realm realm = Realm.getInstance(this);
-            ChemicalModel chemical = realm.where(ChemicalModel.class).equalTo("name", oldChemicalName).findFirst();
+            ChemicalModel chemical = realm
+                    .where(ChemicalModel.class)
+                    .equalTo("name", oldChemicalName)
+                    .equalTo("lab.name", labName)
+                    .findFirst();
             realm.close();
 
             // Get the EditText
@@ -44,6 +48,9 @@ public class EditChemicalActvity extends AppCompatActivity {
             chemicalCASEdit.setText(chemical.getChemicalAbstractServiceRegistryNumber());
             chemicalQuantityEdit.setText(((Integer) chemical.getQuantity()).toString());
             chemicalUnitEdit.setText(chemical.getQuantityUnit());
+        } else {
+            oldChemicalName = null;
+            labName = extras.getString("labName");
         }
     }
 
@@ -63,21 +70,29 @@ public class EditChemicalActvity extends AppCompatActivity {
         Realm realm = Realm.getInstance(this);
 
         // Get the lab that this ChemicalModel is associated with
-        LabModel lab = realm.where(LabModel.class).equalTo("name", labName).findFirst();
+        LabModel lab = realm
+                .where(LabModel.class)
+                .equalTo("name", labName)
+                .findFirst();
 
-        // Create or save the ChemicalModel
         realm.beginTransaction();
-        ChemicalModel chemical;
-        if (oldChemicalName == null) {
-            chemical = realm.createObject(ChemicalModel.class);
-        } else {
-           chemical = realm.where(ChemicalModel.class).equalTo("name", oldChemicalName).findFirst();
+        // Remove old ChemicalModel
+        if (oldChemicalName != null) {
+            ChemicalModel oldChemical = realm
+                    .where(ChemicalModel.class)
+                   .equalTo("name", oldChemicalName)
+                   .equalTo("lab.name", labName)
+                   .findFirst();
+            oldChemical.removeFromRealm();
         }
+        // Create or save the ChemicalModel
+        ChemicalModel chemical = realm.createObject(ChemicalModel.class);
         chemical.setName(chemicalName);
         chemical.setChemicalAbstractServiceRegistryNumber(chemicalCAS);
         chemical.setQuantity(chemicalQuantity);
         chemical.setQuantityUnit(chemicalUnit);
         chemical.setLab(lab);
+
         realm.commitTransaction();
         realm.close();
 
