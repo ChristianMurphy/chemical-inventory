@@ -8,7 +8,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context=".ChemicalActvity">
+    tools:context=".EditChemicalActvity">
 
     <TextView
         android:layout_width="wrap_content"
@@ -79,6 +79,7 @@
         android:layout_height="wrap_content"
         android:text="Save"
         android:id="@+id/button_chemical_save"
+        android:onClick="saveChemical"
         app:layout_row="4"
         app:layout_column="1" />
 

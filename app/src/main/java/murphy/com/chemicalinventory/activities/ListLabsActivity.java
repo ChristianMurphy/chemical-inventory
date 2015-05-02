@@ -42,7 +42,7 @@ public class ListLabsActivity extends AppCompatActivity {
     }
 
     public void createLab(View view) {
-        Intent createLabActivity = new Intent(this, LabActivity.class);
+        Intent createLabActivity = new Intent(this, EditLabActivity.class);
         startActivity(createLabActivity);
     }
 

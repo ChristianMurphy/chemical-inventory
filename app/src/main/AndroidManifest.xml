@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.LabActivity"
+            android:name=".activities.EditLabActivity"
             android:label="@string/title_activity_lab" >
         </activity>
         <activity
@@ -25,7 +25,7 @@
             android:label="@string/title_activity_list_chemicals" >
         </activity>
         <activity
-            android:name=".activities.ChemicalActvity"
+            android:name=".activities.EditChemicalActvity"
             android:label="@string/title_activity_chemical_actvity" >
         </activity>
     </application>
