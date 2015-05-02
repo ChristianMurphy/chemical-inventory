@@ -24,6 +24,10 @@
             android:name=".ListChemicalsActivity"
             android:label="@string/title_activity_list_chemicals" >
         </activity>
+        <activity
+            android:name=".ChemicalActvity"
+            android:label="@string/title_activity_chemical_actvity" >
+        </activity>
     </application>
 
 </manifest>
