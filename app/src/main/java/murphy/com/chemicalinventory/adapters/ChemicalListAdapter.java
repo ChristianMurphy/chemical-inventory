@@ -26,20 +26,32 @@ public class ChemicalListAdapter extends RealmBaseAdapter<ChemicalModel> impleme
     public View getView(int position, View convertView, ViewGroup parent) {
         ChemicalViewHolder viewHolder;
         if (convertView == null) {
+            // Create Item and Holder
             convertView = inflater.inflate(android.R.layout.simple_list_item_2, parent, false);
             viewHolder = new ChemicalViewHolder();
+
+            // Attach TextAreas to Holder
             viewHolder.name = (TextView) convertView.findViewById(android.R.id.text1);
             viewHolder.amount = (TextView) convertView.findViewById(android.R.id.text2);
+
+            // Set TextArea color
+            viewHolder.name.setTextColor(Color.BLACK);
+            viewHolder.amount.setTextColor(Color.BLACK);
+
+            // Tag TextArea for retrieval later
             convertView.setTag(viewHolder);
         } else {
+            // Retrieve Holder information from Tag
             viewHolder = (ChemicalViewHolder) convertView.getTag();
         }
 
+        // Get the ChemicalModel
         ChemicalModel item = realmResults.get(position);
+
+        // Set the Holder TextAreas values
         viewHolder.name.setText(item.getName());
-        viewHolder.name.setTextColor(Color.BLACK);
         viewHolder.amount.setText(item.getQuantity() + " " + item.getQuantityUnit());
-        viewHolder.amount.setTextColor(Color.BLACK);
+
         return convertView;
     }
 
