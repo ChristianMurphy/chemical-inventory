@@ -11,8 +11,6 @@ public class Lab extends RealmObject {
     private String location;
     private String manager;
 
-    private RealmList<Chemical> chemicals;
-
     public String getName() {
         return name;
     }
@@ -35,13 +33,5 @@ public class Lab extends RealmObject {
 
     public void setManager(String manager) {
         this.manager = manager;
-    }
-
-    public RealmList<Chemical> getChemicals() {
-        return chemicals;
-    }
-
-    public void setChemicals(RealmList<Chemical> chemicals) {
-        this.chemicals = chemicals;
     }
 }

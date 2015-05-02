@@ -2,6 +2,7 @@ package murphy.com.chemicalinventory;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -10,6 +11,7 @@ public class ListChemicalsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d("List Chemicals", getIntent().getExtras().getString("name"));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_chemicals);
     }

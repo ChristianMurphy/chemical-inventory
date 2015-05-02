@@ -2,10 +2,10 @@
     <string name="app_name">Chemical Inventory</string>
 
     <string name="action_settings">Settings</string>
-    <string name="title_activity_lab">LabActivity</string>
+    <string name="title_activity_lab">Edit Lab</string>
 
     <string name="floating_action_button">New</string>
-    <string name="title_activity_list_chemicals">ListChemicalsActivity</string>
+    <string name="title_activity_list_chemicals">Chemicals</string>
 
     <string name="hello_world">Hello world!</string>
 </resources>

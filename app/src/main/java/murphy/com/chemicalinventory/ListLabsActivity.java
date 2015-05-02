@@ -33,8 +33,8 @@ public class ListLabsActivity extends AppCompatActivity {
         listView.setClickable(true);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView parent, View v, int position, long id){
-                labAdapter.getRealmResults().get(position).getName();
                 Intent listChemicalsActivity = new Intent(parent.getContext(), ListChemicalsActivity.class);
+                listChemicalsActivity.putExtra("name", labAdapter.getRealmResults().get(position).getName());
                 startActivity(listChemicalsActivity);
             }
         });

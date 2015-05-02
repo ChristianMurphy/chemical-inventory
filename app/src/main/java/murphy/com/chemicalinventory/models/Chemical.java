@@ -11,7 +11,7 @@ public class Chemical extends RealmObject {
     private int quantity;
     private String quantityUnit;
 
-    private RealmList<Lab> labs;
+    private Lab lab;
 
     public String getName() {
         return name;
@@ -45,11 +45,11 @@ public class Chemical extends RealmObject {
         this.quantityUnit = quantityUnit;
     }
 
-    public RealmList<Lab> getLabs() {
-        return labs;
+    public Lab getLab() {
+        return lab;
     }
 
-    public void setLabs(RealmList<Lab> labs) {
-        this.labs = labs;
+    public void setLab(Lab lab) {
+        this.lab = lab;
     }
 }
