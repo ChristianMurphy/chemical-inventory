@@ -11,6 +11,12 @@ import io.realm.RealmBaseAdapter;
 import io.realm.RealmResults;
 import murphy.com.chemicalinventory.models.ChemicalModel;
 
+/**
+ * ChemicalListAdapter
+ * @author Christian Murphy
+ * @version March 1, 2015
+ * License: MIT http://opensource.org/licenses/MIT
+ */
 public class ChemicalListAdapter extends RealmBaseAdapter<ChemicalModel> implements ListAdapter {
 
     private static class ChemicalViewHolder {

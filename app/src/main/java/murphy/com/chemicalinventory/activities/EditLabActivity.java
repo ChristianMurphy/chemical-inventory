@@ -11,7 +11,12 @@ import io.realm.Realm;
 import murphy.com.chemicalinventory.R;
 import murphy.com.chemicalinventory.models.LabModel;
 
-
+/**
+ * EditLabActivity
+ * @author Christian Murphy
+ * @version March 1, 2015
+ * License: MIT http://opensource.org/licenses/MIT
+ */
 public class EditLabActivity extends AppCompatActivity {
 
     @Override

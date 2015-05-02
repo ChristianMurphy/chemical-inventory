@@ -1,9 +1,14 @@
 package murphy.com.chemicalinventory.models;
 
-import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
+/**
+ * LabModel
+ * @author Christian Murphy
+ * @version March 1, 2015
+ * License: MIT http://opensource.org/licenses/MIT
+ */
 public class LabModel extends RealmObject {
     @PrimaryKey
     private String name;

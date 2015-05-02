@@ -11,6 +11,12 @@ import io.realm.RealmBaseAdapter;
 import io.realm.RealmResults;
 import murphy.com.chemicalinventory.models.LabModel;
 
+/**
+ * LabListAdapter
+ * @author Christian Murphy
+ * @version March 1, 2015
+ * License: MIT http://opensource.org/licenses/MIT
+ */
 public class LabListAdapter extends RealmBaseAdapter<LabModel> implements ListAdapter {
 
     private static class LabViewHolder {

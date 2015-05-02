@@ -3,6 +3,12 @@ package murphy.com.chemicalinventory.models;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
+/**
+ * ChemicalModel
+ * @author Christian Murphy
+ * @version March 1, 2015
+ * License: MIT http://opensource.org/licenses/MIT
+ */
 public class ChemicalModel extends RealmObject {
     @PrimaryKey
     private String name;

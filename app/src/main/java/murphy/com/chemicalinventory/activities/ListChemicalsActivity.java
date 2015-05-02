@@ -15,7 +15,12 @@ import murphy.com.chemicalinventory.R;
 import murphy.com.chemicalinventory.adapters.ChemicalListAdapter;
 import murphy.com.chemicalinventory.models.ChemicalModel;
 
-
+/**
+ * ListChemicalsActivity
+ * @author Christian Murphy
+ * @version March 1, 2015
+ * License: MIT http://opensource.org/licenses/MIT
+ */
 public class ListChemicalsActivity extends AppCompatActivity {
     String labName;
     ChemicalListAdapter chemicalListAdapter;
