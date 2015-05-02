@@ -10,14 +10,14 @@ import io.realm.RealmBaseAdapter;
 import io.realm.RealmResults;
 import murphy.com.chemicalinventory.models.ChemicalModel;
 
-public class ChemicalAdapter extends RealmBaseAdapter<ChemicalModel> implements ListAdapter {
+public class ChemicalListAdapter extends RealmBaseAdapter<ChemicalModel> implements ListAdapter {
 
     private static class ChemicalViewHolder {
         TextView name;
         TextView chemicalAbstractServiceRegistryNumber;
     }
 
-    public ChemicalAdapter(Context context, RealmResults<ChemicalModel> realmResults, boolean automaticUpdate) {
+    public ChemicalListAdapter(Context context, RealmResults<ChemicalModel> realmResults, boolean automaticUpdate) {
         super(context, realmResults, automaticUpdate);
     }
 

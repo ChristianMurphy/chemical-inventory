@@ -12,12 +12,12 @@ import android.widget.ListView;
 import io.realm.Realm;
 import io.realm.RealmResults;
 import murphy.com.chemicalinventory.R;
-import murphy.com.chemicalinventory.adapters.LabAdapter;
+import murphy.com.chemicalinventory.adapters.LabListAdapter;
 import murphy.com.chemicalinventory.models.LabModel;
 
 
 public class ListLabsActivity extends AppCompatActivity {
-    LabAdapter labAdapter;
+    LabListAdapter labListAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,16 +26,16 @@ public class ListLabsActivity extends AppCompatActivity {
         Realm realm = Realm.getInstance(this);
         RealmResults<LabModel> labs = realm.where(LabModel.class).findAll();
 
-        labAdapter = new LabAdapter(getApplicationContext(), labs, true);
+        labListAdapter = new LabListAdapter(getApplicationContext(), labs, true);
         setContentView(R.layout.activity_list_labs);
         ListView listView = (ListView) findViewById(R.id.lab_list);
 
-        listView.setAdapter(labAdapter);
+        listView.setAdapter(labListAdapter);
         listView.setClickable(true);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView parent, View v, int position, long id){
                 Intent listChemicalsActivity = new Intent(parent.getContext(), ListChemicalsActivity.class);
-                listChemicalsActivity.putExtra("name", labAdapter.getRealmResults().get(position).getName());
+                listChemicalsActivity.putExtra("name", labListAdapter.getRealmResults().get(position).getName());
                 startActivity(listChemicalsActivity);
             }
         });
@@ -49,7 +49,7 @@ public class ListLabsActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_list_labs, menu);
         return true;
     }
 

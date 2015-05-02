@@ -10,13 +10,13 @@ import io.realm.RealmBaseAdapter;
 import io.realm.RealmResults;
 import murphy.com.chemicalinventory.models.LabModel;
 
-public class LabAdapter extends RealmBaseAdapter<LabModel> implements ListAdapter {
+public class LabListAdapter extends RealmBaseAdapter<LabModel> implements ListAdapter {
 
     private static class LabViewHolder {
         TextView name;
     }
 
-    public LabAdapter(Context context, RealmResults<LabModel> realmResults, boolean automaticUpdate) {
+    public LabListAdapter(Context context, RealmResults<LabModel> realmResults, boolean automaticUpdate) {
         super(context, realmResults, automaticUpdate);
     }
 
