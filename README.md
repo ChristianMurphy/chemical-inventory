@@ -5,6 +5,7 @@
 This application is designed to allow lab managers to easily create a EHS and OSHA compliant data inventory of their chemicals.
 
 It has primary objectives
+
 1. Be EHS and OSHA compliant (requires specific data to be stored)
 2. Use simple and intuitive CRUD operations for managing inventory
 
@@ -14,6 +15,7 @@ Future goals
 
 ## Use Case
 Lab coordinator Bob want to inventory for OSHA report
+
 1. Open app
 2. Add a lab `Main Lab`
 3. Click to add chemical
