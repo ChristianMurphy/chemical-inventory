@@ -32,9 +32,9 @@ public class EditLabActivity extends AppCompatActivity {
         String labManager = labManagerEdit.getText().toString();
 
         Realm realm = Realm.getInstance(this);
+        realm.beginTransaction();
 
         // Create new LabModel
-        realm.beginTransaction();
         LabModel lab = realm.createObject(LabModel.class);
         lab.setName(labName);
         lab.setLocation(labLocation);

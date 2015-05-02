@@ -24,19 +24,23 @@ public class ListChemicalsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // Get the name of the lab
         labName = getIntent().getExtras().getString("name");
 
+        // Get the list of chemical in the lab
         Realm realm = Realm.getInstance(this);
         RealmResults<ChemicalModel> chemicals = realm
                 .where(ChemicalModel.class)
                 .equalTo("lab.name", labName)
                 .findAll();
 
+        // Create the adapter for list of Chemicals
         chemicalListAdapter = new ChemicalListAdapter(getApplicationContext(), chemicals, true);
         setContentView(R.layout.activity_list_chemicals);
         ListView listView = (ListView) findViewById(R.id.chemical_list);
-
         listView.setAdapter(chemicalListAdapter);
+
+        // Attach listener for when a Chemical is clicked
         listView.setClickable(true);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView parent, View v, int position, long id){

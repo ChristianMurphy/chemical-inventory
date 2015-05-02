@@ -23,16 +23,19 @@ public class ListLabsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // Get a list of all the Labs
         Realm realm = Realm.getInstance(this);
         RealmResults<LabModel> labs = realm
                 .where(LabModel.class)
                 .findAll();
 
+        // Create an adapter for the list of Labs
         labListAdapter = new LabListAdapter(getApplicationContext(), labs, true);
         setContentView(R.layout.activity_list_labs);
         ListView listView = (ListView) findViewById(R.id.lab_list);
-
         listView.setAdapter(labListAdapter);
+
+        // Attach an event listener when a Lab is clicked
         listView.setClickable(true);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView parent, View v, int position, long id){
