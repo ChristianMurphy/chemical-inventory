@@ -15,6 +15,7 @@ import murphy.com.chemicalinventory.models.LabModel;
 
 public class EditChemicalActvity extends AppCompatActivity {
     String labName;
+    String oldChemicalName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,18 +24,37 @@ public class EditChemicalActvity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         setContentView(R.layout.activity_edit_chemical);
         if (extras.containsKey("labName")) {
+            oldChemicalName = null;
             labName = extras.getString("labName");
         } else {
-            // TODO Edit chemical
+            // Get the ChemicalModel
+            oldChemicalName = extras.getString("chemicalName");
+            Realm realm = Realm.getInstance(this);
+            ChemicalModel chemical = realm.where(ChemicalModel.class).equalTo("name", oldChemicalName).findFirst();
+            realm.close();
+
+            // Get the EditText
+            EditText chemicalNameEdit = (EditText) findViewById(R.id.edit_chemical_name);
+            EditText chemicalCASEdit = (EditText) findViewById(R.id.edit_chemical_cas_number);
+            EditText chemicalQuantityEdit = (EditText) findViewById(R.id.edit_chemical_quantity);
+            EditText chemicalUnitEdit = (EditText) findViewById(R.id.edit_chemical_unit);
+
+            // Set the EditText values
+            chemicalNameEdit.setText(chemical.getName());
+            chemicalCASEdit.setText(chemical.getChemicalAbstractServiceRegistryNumber());
+            chemicalQuantityEdit.setText(((Integer) chemical.getQuantity()).toString());
+            chemicalUnitEdit.setText(chemical.getQuantityUnit());
         }
     }
 
     public void saveChemical(View view) {
+        // Get the EditText
         EditText chemicalNameEdit = (EditText) findViewById(R.id.edit_chemical_name);
         EditText chemicalCASEdit = (EditText) findViewById(R.id.edit_chemical_cas_number);
         EditText chemicalQuantityEdit = (EditText) findViewById(R.id.edit_chemical_quantity);
         EditText chemicalUnitEdit = (EditText) findViewById(R.id.edit_chemical_unit);
 
+        // Convert EditText to variables
         String chemicalName = chemicalNameEdit.getText().toString();
         String chemicalCAS = chemicalCASEdit.getText().toString();
         Integer chemicalQuantity = Integer.parseInt(chemicalQuantityEdit.getText().toString());
@@ -42,16 +62,24 @@ public class EditChemicalActvity extends AppCompatActivity {
 
         Realm realm = Realm.getInstance(this);
 
+        // Get the lab that this ChemicalModel is associated with
         LabModel lab = realm.where(LabModel.class).equalTo("name", labName).findFirst();
 
+        // Create or save the ChemicalModel
         realm.beginTransaction();
-        ChemicalModel chemical = realm.createObject(ChemicalModel.class); // Create a new object
+        ChemicalModel chemical;
+        if (oldChemicalName == null) {
+            chemical = realm.createObject(ChemicalModel.class);
+        } else {
+           chemical = realm.where(ChemicalModel.class).equalTo("name", oldChemicalName).findFirst();
+        }
         chemical.setName(chemicalName);
         chemical.setChemicalAbstractServiceRegistryNumber(chemicalCAS);
         chemical.setQuantity(chemicalQuantity);
         chemical.setQuantityUnit(chemicalUnit);
         chemical.setLab(lab);
         realm.commitTransaction();
+        realm.close();
 
         finish();
     }

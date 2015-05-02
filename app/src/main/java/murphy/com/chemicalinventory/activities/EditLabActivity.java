@@ -21,22 +21,26 @@ public class EditLabActivity extends AppCompatActivity {
     }
 
     public void createLab(View view) {
+        // Get the Edit Text fields
         EditText labNameEdit = (EditText) findViewById(R.id.edit_lab_name);
         EditText labLocationEdit = (EditText) findViewById(R.id.edit_lab_location);
         EditText labManagerEdit = (EditText) findViewById(R.id.edit_lab_manager);
 
+        // Convert Edit Text to Variables
         String labName = labNameEdit.getText().toString();
         String labLocation = labLocationEdit.getText().toString();
         String labManager = labManagerEdit.getText().toString();
 
         Realm realm = Realm.getInstance(this);
 
+        // Create new LabModel
         realm.beginTransaction();
-        LabModel lab = realm.createObject(LabModel.class); // Create a new object
+        LabModel lab = realm.createObject(LabModel.class);
         lab.setName(labName);
         lab.setLocation(labLocation);
         lab.setManager(labManager);
         realm.commitTransaction();
+        realm.close();
 
         finish();
     }
