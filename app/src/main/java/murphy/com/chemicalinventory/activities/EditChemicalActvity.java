@@ -5,8 +5,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 
+import io.realm.Realm;
 import murphy.com.chemicalinventory.R;
+import murphy.com.chemicalinventory.models.ChemicalModel;
+import murphy.com.chemicalinventory.models.LabModel;
 
 
 public class EditChemicalActvity extends AppCompatActivity {
@@ -20,10 +24,35 @@ public class EditChemicalActvity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_chemical);
         if (extras.containsKey("labName")) {
             labName = extras.getString("labName");
+        } else {
+            // TODO Edit chemical
         }
     }
 
     public void saveChemical(View view) {
+        EditText chemicalNameEdit = (EditText) findViewById(R.id.edit_chemical_name);
+        EditText chemicalCASEdit = (EditText) findViewById(R.id.edit_chemical_cas_number);
+        EditText chemicalQuantityEdit = (EditText) findViewById(R.id.edit_chemical_quantity);
+        EditText chemicalUnitEdit = (EditText) findViewById(R.id.edit_chemical_unit);
+
+        String chemicalName = chemicalNameEdit.getText().toString();
+        String chemicalCAS = chemicalCASEdit.getText().toString();
+        Integer chemicalQuantity = Integer.parseInt(chemicalQuantityEdit.getText().toString());
+        String chemicalUnit = chemicalUnitEdit.getText().toString();
+
+        Realm realm = Realm.getInstance(this);
+
+        LabModel lab = realm.where(LabModel.class).equalTo("name", labName).findFirst();
+
+        realm.beginTransaction();
+        ChemicalModel chemical = realm.createObject(ChemicalModel.class); // Create a new object
+        chemical.setName(chemicalName);
+        chemical.setChemicalAbstractServiceRegistryNumber(chemicalCAS);
+        chemical.setQuantity(chemicalQuantity);
+        chemical.setQuantityUnit(chemicalUnit);
+        chemical.setLab(lab);
+        realm.commitTransaction();
+
         finish();
     }
 
