@@ -15,7 +15,7 @@ public class ChemicalListAdapter extends RealmBaseAdapter<ChemicalModel> impleme
 
     private static class ChemicalViewHolder {
         TextView name;
-        TextView chemicalAbstractServiceRegistryNumber;
+        TextView amount;
     }
 
     public ChemicalListAdapter(Context context, RealmResults<ChemicalModel> realmResults, boolean automaticUpdate) {
@@ -29,7 +29,7 @@ public class ChemicalListAdapter extends RealmBaseAdapter<ChemicalModel> impleme
             convertView = inflater.inflate(android.R.layout.simple_list_item_2, parent, false);
             viewHolder = new ChemicalViewHolder();
             viewHolder.name = (TextView) convertView.findViewById(android.R.id.text1);
-            viewHolder.chemicalAbstractServiceRegistryNumber = (TextView) convertView.findViewById(android.R.id.text2);
+            viewHolder.amount = (TextView) convertView.findViewById(android.R.id.text2);
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ChemicalViewHolder) convertView.getTag();
@@ -38,8 +38,8 @@ public class ChemicalListAdapter extends RealmBaseAdapter<ChemicalModel> impleme
         ChemicalModel item = realmResults.get(position);
         viewHolder.name.setText(item.getName());
         viewHolder.name.setTextColor(Color.BLACK);
-        viewHolder.chemicalAbstractServiceRegistryNumber.setText(item.getChemicalAbstractServiceRegistryNumber());
-        viewHolder.chemicalAbstractServiceRegistryNumber.setTextColor(Color.BLACK);
+        viewHolder.amount.setText(item.getQuantity() + " " + item.getQuantityUnit());
+        viewHolder.amount.setTextColor(Color.BLACK);
         return convertView;
     }
 
