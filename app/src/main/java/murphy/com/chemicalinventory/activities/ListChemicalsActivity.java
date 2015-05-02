@@ -27,6 +27,9 @@ public class ListChemicalsActivity extends AppCompatActivity {
         // Get the name of the lab
         labName = getIntent().getExtras().getString("name");
 
+        // Set lab name as Activity title
+        setTitle(labName);
+
         // Get the list of chemical in the lab
         Realm realm = Realm.getInstance(this);
         RealmResults<ChemicalModel> chemicals = realm

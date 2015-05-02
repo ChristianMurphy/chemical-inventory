@@ -85,7 +85,7 @@ public class EditChemicalActvity extends AppCompatActivity {
                    .findFirst();
             oldChemical.removeFromRealm();
         }
-        // Create or save the ChemicalModel
+        // Save the new ChemicalModel
         ChemicalModel chemical = realm.createObject(ChemicalModel.class);
         chemical.setName(chemicalName);
         chemical.setChemicalAbstractServiceRegistryNumber(chemicalCAS);
