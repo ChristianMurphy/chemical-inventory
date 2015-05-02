@@ -3,19 +3,41 @@ package murphy.com.chemicalinventory;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
+
+import io.realm.Realm;
+import io.realm.RealmResults;
+import murphy.com.chemicalinventory.adapters.ChemicalAdapter;
+import murphy.com.chemicalinventory.models.Chemical;
 
 
 public class ListChemicalsActivity extends AppCompatActivity {
+    ChemicalAdapter chemicalAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.d("List Chemicals", getIntent().getExtras().getString("name"));
         super.onCreate(savedInstanceState);
+
+        Realm realm = Realm.getInstance(this);
+        RealmResults<Chemical> chemicals = realm.where(Chemical.class).equalTo("lab.name", getIntent().getExtras().getString("name")).findAll();
+
+        chemicalAdapter = new ChemicalAdapter(getApplicationContext(), chemicals, true);
         setContentView(R.layout.activity_list_chemicals);
+        ListView listView = (ListView) findViewById(R.id.chemical_list);
+
+        listView.setAdapter(chemicalAdapter);
+        listView.setClickable(true);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView parent, View v, int position, long id){
+                Intent editChemicalActivity = new Intent(parent.getContext(), ListChemicalsActivity.class);
+                editChemicalActivity.putExtra("name", chemicalAdapter.getRealmResults().get(position).getName());
+                startActivity(editChemicalActivity);
+            }
+        });
     }
 
     public void createChemical(View view) {
