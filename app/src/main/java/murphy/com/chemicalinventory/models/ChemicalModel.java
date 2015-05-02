@@ -1,17 +1,16 @@
 package murphy.com.chemicalinventory.models;
 
-import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
-public class Chemical extends RealmObject {
+public class ChemicalModel extends RealmObject {
     @PrimaryKey
     private String name;
     private  String chemicalAbstractServiceRegistryNumber;
     private int quantity;
     private String quantityUnit;
 
-    private Lab lab;
+    private LabModel lab;
 
     public String getName() {
         return name;
@@ -45,11 +44,11 @@ public class Chemical extends RealmObject {
         this.quantityUnit = quantityUnit;
     }
 
-    public Lab getLab() {
+    public LabModel getLab() {
         return lab;
     }
 
-    public void setLab(Lab lab) {
+    public void setLab(LabModel lab) {
         this.lab = lab;
     }
 }

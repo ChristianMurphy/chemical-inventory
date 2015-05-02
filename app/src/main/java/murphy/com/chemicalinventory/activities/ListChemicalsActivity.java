@@ -1,4 +1,4 @@
-package murphy.com.chemicalinventory;
+package murphy.com.chemicalinventory.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,8 +11,9 @@ import android.widget.ListView;
 
 import io.realm.Realm;
 import io.realm.RealmResults;
+import murphy.com.chemicalinventory.R;
 import murphy.com.chemicalinventory.adapters.ChemicalAdapter;
-import murphy.com.chemicalinventory.models.Chemical;
+import murphy.com.chemicalinventory.models.ChemicalModel;
 
 
 public class ListChemicalsActivity extends AppCompatActivity {
@@ -23,7 +24,7 @@ public class ListChemicalsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         Realm realm = Realm.getInstance(this);
-        RealmResults<Chemical> chemicals = realm.where(Chemical.class).equalTo("lab.name", getIntent().getExtras().getString("name")).findAll();
+        RealmResults<ChemicalModel> chemicals = realm.where(ChemicalModel.class).equalTo("lab.name", getIntent().getExtras().getString("name")).findAll();
 
         chemicalAdapter = new ChemicalAdapter(getApplicationContext(), chemicals, true);
         setContentView(R.layout.activity_list_chemicals);

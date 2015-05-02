@@ -8,16 +8,16 @@ import android.widget.TextView;
 
 import io.realm.RealmBaseAdapter;
 import io.realm.RealmResults;
-import murphy.com.chemicalinventory.models.Chemical;
+import murphy.com.chemicalinventory.models.ChemicalModel;
 
-public class ChemicalAdapter extends RealmBaseAdapter<Chemical> implements ListAdapter {
+public class ChemicalAdapter extends RealmBaseAdapter<ChemicalModel> implements ListAdapter {
 
     private static class ChemicalViewHolder {
         TextView name;
         TextView chemicalAbstractServiceRegistryNumber;
     }
 
-    public ChemicalAdapter(Context context, RealmResults<Chemical> realmResults, boolean automaticUpdate) {
+    public ChemicalAdapter(Context context, RealmResults<ChemicalModel> realmResults, boolean automaticUpdate) {
         super(context, realmResults, automaticUpdate);
     }
 
@@ -34,13 +34,13 @@ public class ChemicalAdapter extends RealmBaseAdapter<Chemical> implements ListA
             viewHolder = (ChemicalViewHolder) convertView.getTag();
         }
 
-        Chemical item = realmResults.get(position);
+        ChemicalModel item = realmResults.get(position);
         viewHolder.name.setText(item.getName());
         viewHolder.chemicalAbstractServiceRegistryNumber.setText(item.getChemicalAbstractServiceRegistryNumber());
         return convertView;
     }
 
-    public RealmResults<Chemical> getRealmResults() {
+    public RealmResults<ChemicalModel> getRealmResults() {
         return realmResults;
     }
 }

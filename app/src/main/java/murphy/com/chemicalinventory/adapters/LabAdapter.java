@@ -8,15 +8,15 @@ import android.widget.TextView;
 
 import io.realm.RealmBaseAdapter;
 import io.realm.RealmResults;
-import murphy.com.chemicalinventory.models.Lab;
+import murphy.com.chemicalinventory.models.LabModel;
 
-public class LabAdapter extends RealmBaseAdapter<Lab> implements ListAdapter {
+public class LabAdapter extends RealmBaseAdapter<LabModel> implements ListAdapter {
 
     private static class LabViewHolder {
         TextView name;
     }
 
-    public LabAdapter(Context context, RealmResults<Lab> realmResults, boolean automaticUpdate) {
+    public LabAdapter(Context context, RealmResults<LabModel> realmResults, boolean automaticUpdate) {
         super(context, realmResults, automaticUpdate);
     }
 
@@ -32,12 +32,12 @@ public class LabAdapter extends RealmBaseAdapter<Lab> implements ListAdapter {
             viewHolder = (LabViewHolder) convertView.getTag();
         }
 
-        Lab item = realmResults.get(position);
+        LabModel item = realmResults.get(position);
         viewHolder.name.setText(item.getName());
         return convertView;
     }
 
-    public RealmResults<Lab> getRealmResults() {
+    public RealmResults<LabModel> getRealmResults() {
         return realmResults;
     }
 }

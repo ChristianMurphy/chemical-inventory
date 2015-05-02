@@ -1,9 +1,11 @@
-package murphy.com.chemicalinventory;
+package murphy.com.chemicalinventory.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import murphy.com.chemicalinventory.R;
 
 
 public class ChemicalActvity extends AppCompatActivity {

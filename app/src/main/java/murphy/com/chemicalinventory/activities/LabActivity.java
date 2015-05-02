@@ -1,4 +1,4 @@
-package murphy.com.chemicalinventory;
+package murphy.com.chemicalinventory.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,7 +8,8 @@ import android.view.View;
 import android.widget.EditText;
 
 import io.realm.Realm;
-import murphy.com.chemicalinventory.models.Lab;
+import murphy.com.chemicalinventory.R;
+import murphy.com.chemicalinventory.models.LabModel;
 
 
 public class LabActivity extends AppCompatActivity {
@@ -31,7 +32,7 @@ public class LabActivity extends AppCompatActivity {
         Realm realm = Realm.getInstance(this);
 
         realm.beginTransaction();
-        Lab lab = realm.createObject(Lab.class); // Create a new object
+        LabModel lab = realm.createObject(LabModel.class); // Create a new object
         lab.setName(labName);
         lab.setLocation(labLocation);
         lab.setManager(labManager);
